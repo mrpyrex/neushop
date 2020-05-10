@@ -12,6 +12,8 @@ import Shop from "./pages/shop/Shop";
 import Header from "./components/header/Header";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import { selectCurrentUser } from "./components/auth/user.selectors";
+import { createStructuredSelector } from "reselect";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -66,8 +68,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
