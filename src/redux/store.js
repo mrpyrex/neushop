@@ -9,14 +9,13 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware, logger];
 
-const store = createStore(
+export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...middlewares))
 );
 
-// const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 // sagaMiddleware.run()
 
-// export default { store, persistor };
-export default store;
+export default { store, persistor };
