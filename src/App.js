@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { selectCurrentUser } from "./components/auth/user.selectors";
 import { createStructuredSelector } from "reselect";
+import Checkout from "./pages/checkout/Checkout";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -48,6 +49,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={Shop} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
             path="/login"
