@@ -14,8 +14,8 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(...middlewares))
 );
 
-export const persistor = persistStore(store);
-
 // sagaMiddleware.run()
+
+export const persistor = persistStore(store);
 
 export default { store, persistor };

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { auth, signInWithGoogle } from "../../firebase/config";
+import { connect } from "react-redux";
+import { googleSignInStart } from "../../redux/actions/user.action";
 
 class Login extends Component {
   constructor(props) {
@@ -28,6 +30,7 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
   render() {
+    const { googleSignInStart } = this.props;
     return (
       <div>
         <h3>Login</h3>
@@ -49,11 +52,17 @@ class Login extends Component {
             onChange={this.handleChange}
           />
           <button type="submit">Submit</button>
-          <button onClick={signInWithGoogle}>Google Singin</button>
+          <button type="button" onClick={googleSignInStart}>
+            Google Singin
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
